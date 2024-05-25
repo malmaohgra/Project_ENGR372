@@ -66,10 +66,11 @@ mysqli_close($conn);
       }
       .cart-container {
         width: 80%;
-        margin: 20px auto;
+        margin: 7% auto;
         background: white;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30%;
       }
       table {
         width: 100%;
@@ -106,6 +107,13 @@ mysqli_close($conn);
         border: none;
         font-weight: bold;
       }
+           footer {
+  text-align: center;
+  padding: 5px;
+  background-color: #fbe3ce;
+  color: #000;
+  position: relative;
+}
     </style>
 </head>
 <body>
@@ -200,5 +208,13 @@ function removeItemsFromCookie(ids) {
 
 
 </script>
+    <footer>
+    <small>
+      2024 Spring Semester - ENGR 372 - 
+    </small>
+    <small>
+        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
+    </small>
+  </footer>
 </body>
 </html>
