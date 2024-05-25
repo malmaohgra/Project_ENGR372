@@ -4,7 +4,7 @@ session_start();
 // Connect with DB
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "abcd";
 $dbname = "group2";
 
 
@@ -185,7 +185,21 @@ mysqli_close($conn);
         <a href="all.php">Courses</a>
         <a href="contact.php">Contact</a>
         <a href="aboutus.php">About Us</a>
-        <a href="login.html">Login</a>
+        <a href="<?php 
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'logout.php';
+        } else {
+            echo 'login.html';
+        }
+    ?>">
+        <?php 
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'Logout';
+        } else {
+            echo 'Login';
+        }
+        ?>
+    </a>
         <span style="text-align: right; float: right">
             <a href="cartPage.php">Shopping Cart</a>
             <img src="images/shopping-cart.png" alt="" width="50" style="margin-top: 5px" />
