@@ -17,6 +17,9 @@ if ($conn === false) {
 
 // Fetch cart items from the database based on the product IDs stored in the cookie
 $cartItems = [];
+if(!$_COOKIE['prod_ids']){
+  $_COOKIE['prod_ids'] = "";
+}
 $cValue = json_decode($_COOKIE['prod_ids'], true);
 
 
@@ -168,11 +171,11 @@ mysqli_close($conn);
     <tfoot>
       <tr class="total-row">
         <td colspan="3"></td>
-        <td>Total: <span class="total-price">TL<?php echo number_format(array_sum(array_column($cartItems, 'price')), 2); ?></span></td>
+        <td>Total: <span class="total-price"><?php echo number_format(array_sum(array_column($cartItems, 'price')), 2); ?> TL</span></td>
         <td>
           <button
             class="checkout-btn"
-            onclick="location.href='checkout.html'"
+            onclick="location.href='checkout.php'"
           >
             Checkout
           </button>
