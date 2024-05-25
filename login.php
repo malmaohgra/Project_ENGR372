@@ -5,7 +5,7 @@ session_start();
 //Connect with DB
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "abcd";
 $dbname = "group2";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

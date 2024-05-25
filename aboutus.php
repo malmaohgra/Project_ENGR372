@@ -177,22 +177,18 @@ section {
         <a href="all.php" >Courses</a>
         <a href="contact.php">Contact</a>
         <a href="aboutus.php" class="active">About Us</a>
-        <a href=
+        <a href="<?php 
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'logout.php';
+        } else {
+            echo 'login.html';
+        }
+    ?>">
         <?php 
-        if ($_SESSION['logged']==1){
-           echo "logout.php";
-        }
-        else{
-            echo "login.html";
-        }
-        ?>
-        >
-        <?php 
-        if ($_SESSION['logged']==1){
-           echo "Logout";
-        }
-        else{
-            echo "Login";
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'Logout';
+        } else {
+            echo 'Login';
         }
         ?>
     </a>

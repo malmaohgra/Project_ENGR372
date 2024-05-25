@@ -4,7 +4,7 @@ session_start();
 // Connect with DB
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "abcd";
 $dbname = "group2";
 
 // Create connection
@@ -69,11 +69,10 @@ mysqli_close($conn);
       }
       .cart-container {
         width: 80%;
-        margin: 7% auto;
+        margin: 20px auto;
         background: white;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30%;
       }
       table {
         width: 100%;
@@ -110,13 +109,6 @@ mysqli_close($conn);
         border: none;
         font-weight: bold;
       }
-           footer {
-  text-align: center;
-  padding: 5px;
-  background-color: #fbe3ce;
-  color: #000;
-  position: relative;
-}
     </style>
 </head>
 <body>
@@ -125,22 +117,18 @@ mysqli_close($conn);
         <a href="all.php" >Courses</a>
         <a href="contact.php">Contact</a>
         <a href="aboutus.php">About Us</a>
-        <a href=
+        <a href="<?php 
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'logout.php';
+        } else {
+            echo 'login.html';
+        }
+    ?>">
         <?php 
-        if ($_SESSION['logged']==1){
-           echo "logout.php";
-        }
-        else{
-            echo "login.html";
-        }
-        ?>
-        >
-        <?php 
-        if ($_SESSION['logged']==1){
-           echo "Logout";
-        }
-        else{
-            echo "Login";
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'Logout';
+        } else {
+            echo 'Login';
         }
         ?>
     </a>
@@ -211,13 +199,5 @@ function removeItemsFromCookie(ids) {
 
 
 </script>
-    <footer>
-    <small>
-      2024 Spring Semester - ENGR 372 - 
-    </small>
-    <small>
-        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
-    </small>
-  </footer>
 </body>
 </html>

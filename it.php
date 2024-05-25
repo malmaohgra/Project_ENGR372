@@ -3,7 +3,7 @@ session_start();
 //Connect with DB
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "abcd";
 $dbname = "group2";
 // Create connection
 $mysqli = new mysqli($servername, $username,
@@ -74,22 +74,18 @@ $mysqli->close();
         <a href="all.php" class="active">Courses</a>
         <a href="contact.php">Contact</a>
         <a href="aboutus.php">About Us</a>
-        <a href=
+        <a href="<?php 
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'logout.php';
+        } else {
+            echo 'login.html';
+        }
+    ?>">
         <?php 
-        if ($_SESSION['logged']==1){
-           echo "logout.php";
-        }
-        else{
-            echo "login.html";
-        }
-        ?>
-        >
-        <?php 
-        if ($_SESSION['logged']==1){
-           echo "Logout";
-        }
-        else{
-            echo "Login";
+        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
+            echo 'Logout';
+        } else {
+            echo 'Login';
         }
         ?>
     </a>
@@ -133,7 +129,7 @@ $mysqli->close();
                         <div class="card_footer">Price:  <?php echo $rows['price'] ?>  
                         <input type="button" value="add to cart" name="btn_add_to_cart" id= <?php echo $rows['product_id'] ?> onclick=
                         <?php 
-                        if ($_SESSION['logged']==1){
+                        if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
                             echo  "add_to_cart(this.id)" ;
                         }
                         else{
