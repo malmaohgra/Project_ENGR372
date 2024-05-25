@@ -15,21 +15,29 @@ if ($conn === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-// Fetch cart items from the database (example query, adjust according to your schema)
+// Fetch cart items from the database based on the product IDs stored in the cookie
 $cartItems = [];
-$sql = "SELECT p.product_id, p.name AS product_name, c.category_name, p.price 
-        FROM product p 
-        JOIN category c ON p.category_id = c.category_id"; // Adjust the table name and column names as necessary
-$result = mysqli_query($conn, $sql);
+$cValue = json_decode($_COOKIE['prod_ids'], true);
 
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $cartItems[] = $row;
-    }
-    // Debugging line
+
+
+if (!empty($cValue)) {
+    // Convert array to comma-separated string for the SQL query
+    $productIds = implode(',', $cValue);
+    $sql = "SELECT p.product_id, p.name AS product_name, c.category_name, p.price 
+            FROM product p 
+            JOIN category c ON p.category_id = c.category_id
+            WHERE p.product_id IN ($productIds)";
     
-} else {
-    echo "ERROR: Could not execute $sql. " . mysqli_error($conn);
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $cartItems[] = $row;
+        }
+    } else {
+        echo "ERROR: Could not execute $sql. " . mysqli_error($conn);
+    }
 }
 
 // Close connection
@@ -47,6 +55,8 @@ mysqli_close($conn);
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -150,7 +160,7 @@ mysqli_close($conn);
             <td><?php echo htmlspecialchars($item['product_name']); ?></td>
             <td><?php echo htmlspecialchars($item['category_name']); ?></td>
             <td class="price"><?php echo htmlspecialchars($item['price']); ?></td>
-            <td><i class="fas fa-trash remove-btn"></i></td>
+            <td><i class="fas fa-trash remove-btn" onclick="removeItemsFromCookie('<?php echo $item['product_id']; ?>')"></i></td>
           </tr>
         <?php endforeach; ?>
       <?php endif; ?>
@@ -173,28 +183,22 @@ mysqli_close($conn);
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const removeButtons = document.querySelectorAll(".remove-btn");
 
-    removeButtons.forEach(button => {
-      button.addEventListener("click", function() {
-        const row = this.parentNode.parentNode;
-        const price = parseFloat(row.querySelector(".price").innerText);
-        row.remove();
-        updateTotal(-price);
-      });
-    });
 
-    function updateTotal(amount) {
-      const totalSpan = document.querySelector(".total-price");
-      let currentTotal = parseFloat(totalSpan.innerText.replace("₺", "").replace(",", ""));
-      if (isNaN(currentTotal)) {
-        currentTotal = 0; // If total is NaN, set it to 0
-      }
-      currentTotal += amount;
-      totalSpan.innerText = `₺${currentTotal.toFixed(2)}`;
-    }
-  });
+
+
+function removeItemsFromCookie(ids) {
+  cValue1 = JSON.parse(Cookies.get('prod_ids'));
+  console.log(cValue1,'$cValue');
+  cValue1 = cValue1.filter(id => id !== ids);
+  console.log(cValue1,'$cValue');
+  Cookies.set('prod_ids', JSON.stringify(cValue1));
+  location.reload();
+}
+
+
+
+
 </script>
 </body>
 </html>
