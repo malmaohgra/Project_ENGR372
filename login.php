@@ -24,6 +24,8 @@ $count = mysqli_num_rows($result);
   
 if($count > 0){  
     $_SESSION['logged']=1;
+    $_SESSION['user_email']=$email;
+
     //PLEASE CHANGE THIS TO MAIN PAGE CONTAINING THE LOGOUT
     header("Location: index.php");}  
 else{  

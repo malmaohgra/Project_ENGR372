@@ -232,7 +232,6 @@ section {
     <section>
       <h2>Science Courses:</h2>
       <div class="wrap">
-        <img src="images/science.jpg" alt="img" height="200"/>
         <div class="item">
           <p><b>- Physics:</b> Dive into the fascinating world of physics, where you'll learn about the laws of motion,
             electricity, magnetism, and more through hands-on experiments and demonstrations.</p>
@@ -241,6 +240,7 @@ section {
           <p><b>- Chemistry:</b> Discover the magic of chemistry as you explore the properties of matter, chemical
             reactions, and the periodic table through engaging demonstrations and lab experiments.</p>
         </div>
+        <img src="images/science.jpg" alt="img" height="200"/>
       </div>
     </section>
     <section>
@@ -268,7 +268,7 @@ section {
       2024 Spring Semester - ENGR 372 - 
     </small>
     <small>
-        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
+        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra, Nazrin Isayeva
     </small>
   </footer>
 
