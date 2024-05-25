@@ -158,13 +158,12 @@ $mysqli->close();
            
         </table>
     </div>
-
     <footer>
     <small>
       2024 Spring Semester - ENGR 372 - 
     </small>
     <small>
-        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
+        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra, Nazrin Isayeva
     </small>
   </footer>
 </body>

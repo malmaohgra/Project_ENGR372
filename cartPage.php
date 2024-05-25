@@ -17,6 +17,9 @@ if ($conn === false) {
 
 // Fetch cart items from the database based on the product IDs stored in the cookie
 $cartItems = [];
+if(!$_COOKIE['prod_ids']){
+  $_COOKIE['prod_ids'] = "";
+}
 $cValue = json_decode($_COOKIE['prod_ids'], true);
 
 
@@ -66,10 +69,11 @@ mysqli_close($conn);
       }
       .cart-container {
         width: 80%;
-        margin: 20px auto;
+        margin: 7% auto;
         background: white;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30%;
       }
       table {
         width: 100%;
@@ -106,6 +110,13 @@ mysqli_close($conn);
         border: none;
         font-weight: bold;
       }
+           footer {
+  text-align: center;
+  padding: 5px;
+  background-color: #fbe3ce;
+  color: #000;
+  position: relative;
+}
     </style>
 </head>
 <body>
@@ -168,11 +179,11 @@ mysqli_close($conn);
     <tfoot>
       <tr class="total-row">
         <td colspan="3"></td>
-        <td>Total: <span class="total-price">TL<?php echo number_format(array_sum(array_column($cartItems, 'price')), 2); ?></span></td>
+        <td>Total: <span class="total-price"><?php echo number_format(array_sum(array_column($cartItems, 'price')), 2); ?> TL</span></td>
         <td>
           <button
             class="checkout-btn"
-            onclick="location.href='checkout.html'"
+            onclick="location.href='checkout.php'"
           >
             Checkout
           </button>
@@ -200,5 +211,13 @@ function removeItemsFromCookie(ids) {
 
 
 </script>
+    <footer>
+    <small>
+      2024 Spring Semester - ENGR 372 - 
+    </small>
+    <small>
+        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
+    </small>
+  </footer>
 </body>
 </html>
