@@ -43,6 +43,12 @@ if (!empty($cValue)) {
     }
 }
 
+
+if(!$_SESSION['logged']){
+  $_SESSION['logged'] = 0;
+}
+
+
 // Close connection
 mysqli_close($conn);
 ?>

@@ -1,5 +1,11 @@
 <?php 
 session_start();
+
+
+if(!$_SESSION['logged']){
+  $_SESSION['logged'] = 0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +33,7 @@ body > section > div > img {
 }
 
 .about-us{
-  height: 300vh;
+  
   width: 100%;
   padding: 90px 0;
   margin-bottom: 50px;
@@ -206,6 +212,7 @@ section {
       <img src="images/about.jpg" alt="about" height="500"/>
       <div class="text">
         <h1>About Us</h1>
+        <br>
         <p>Welcome to our Group 2 company!
           Here at Group 2, we're dedicated to igniting your curiosity and fueling your
           passion for learning. Our platform offers a diverse range of courses designed to inspire, educate, and empower
@@ -222,8 +229,10 @@ section {
         <div class="item">
           <p><b>- Dancing:</b> Learn various styles of dance, from salsa to hip-hop, in a fun and supportive
             environment. No prior experience required!</p>
+            <br>
           <p><b>- Cooking:</b> Explore the culinary world with our cooking courses, where you'll learn essential
             techniques, recipes, and tips to impress your friends and family in the kitchen.</p>
+            <br>
           <p><b>- Art and Crafts:</b> Unleash your creativity with our art and crafts courses, covering everything from
             painting and drawing to pottery and jewelry making.</p>
         </div>
@@ -235,8 +244,10 @@ section {
         <div class="item">
           <p><b>- Physics:</b> Dive into the fascinating world of physics, where you'll learn about the laws of motion,
             electricity, magnetism, and more through hands-on experiments and demonstrations.</p>
+            <br>
           <p><b>- Biology:</b> Explore the wonders of life with our biology courses, covering topics such as genetics,
             evolution, ecology, and anatomy, with a focus on real-world applications.</p>
+            <br>
           <p><b>- Chemistry:</b> Discover the magic of chemistry as you explore the properties of matter, chemical
             reactions, and the periodic table through engaging demonstrations and lab experiments.</p>
         </div>
@@ -250,8 +261,10 @@ section {
         <div class="item">
           <p><b>- Web Development:</b> Master the fundamentals of web development, including HTML, CSS, JavaScript, and
             responsive design, to create stunning and functional websites from scratch.</p>
+            <br>
           <p><b>- Programming:</b> Learn programming languages such as Python, Java, and C++, and gain the skills to
             develop software applications, games, and algorithms.</p>
+            <br>
           <p><b>- Data Science:</b> Dive into the world of data science, where you'll learn how to analyze and interpret
             data using statistical methods, machine learning algorithms, and data visualization tools to make informed
             decisions.</p>

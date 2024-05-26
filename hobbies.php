@@ -21,6 +21,12 @@ $sql = " SELECT * FROM product WHERE category_id= 1";
 $result = $mysqli->query($sql);
 $mysqli->close();
 
+
+if(!$_SESSION['logged']){
+    $_SESSION['logged'] = 0;
+}
+
+
 ?>
 
 
@@ -34,6 +40,15 @@ $mysqli->close();
     <link rel='stylesheet' type='text/css' media='screen' href='coursesGall_styles.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <style>
+        
+        .topnav a.active {
+        background-color: #ddd;
+        color: #000;
+        
+        }
+
+    </style>
     <script>
         function add_to_cart(prod_id){
             var date = new Date();
