@@ -3,11 +3,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(90deg, #0d349b, #e99bc1);
   background-repeat: no-repeat;
-  background-size: cover;
   letter-spacing: 1px;
   font-size: 14px;
+  height: 100vh;
   
-    
 
 }
 h1 {
@@ -79,11 +78,14 @@ td {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
   text-align: center;
   padding: 5px;
   background-color: #fbe3ce;
   color: #000;
-  margin-top: 5%;
+  margin-top: 7%;
+  width: 100%;
 }
 
   /* Style inputs with type="text", select elements and textareas */
