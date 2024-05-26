@@ -38,10 +38,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(90deg, #0d349b, #e99bc1);
     background-repeat: no-repeat;
-    background-size: cover;
     letter-spacing: 1px;
     font-size: 14px;
-    height: 100vh;
+    height: 100%;
+    
+
     }
     .container{
         background-color: #F5F5F5;
@@ -132,12 +133,13 @@
     background-color: #ebdede;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 2px;
-    font-size: small;
-    width: 100px;
+    font-size: medium;
+    width: 35%;
     cursor: pointer;
     padding:  5px 8px;
     margin-left: 10%;
     }
+
     input[type="button"]:hover{
     color: #fafafa;
     background-color: #0d349b;
