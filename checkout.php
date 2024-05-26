@@ -51,6 +51,12 @@ if (!empty($cValue)) {
     }
 }
 
+
+if(!$_SESSION['logged']){
+    $_SESSION['logged'] = 0;
+}
+
+
 // Close connection
 mysqli_close($conn);
 ?>
@@ -63,6 +69,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <style>
         .container {
             margin: 20px auto;
@@ -180,19 +187,35 @@ mysqli_close($conn);
 </head>
 
 <body style="color: rgb(71, 102, 195);">
-    <div class="topnav">
-        <a href="index.php">Home</a>
+<div class="topnav">
+        <a  href="index.php" >Home</a>
         <a href="all.php">Courses</a>
         <a href="contact.php">Contact</a>
         <a href="aboutus.php">About Us</a>
-        <a href="login.html">Login</a>
-        <span style="text-align: right; float: right">
-            <a href="cartPage.php">Shopping Cart</a>
-            <img src="images/shopping-cart.png" alt="" width="50" style="margin-top: 5px" />
-
-        </span>
-    </div>
-    <div align="center">
+        <a href=
+        <?php 
+        if ($_SESSION['logged']==1){
+           echo "logout.php";
+        }
+        else{
+            echo "login.html";
+        }
+        ?>
+        >
+        <?php 
+        if ($_SESSION['logged']==1){
+           echo "Logout";
+        }
+        else{
+            echo "Login";
+        }
+        ?>
+    </a>
+        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
+        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
+        My Shopping Cart </a>
+</div> 
+<div align="center">
         <form id="form1" name="form1"></form>
         <table id="firsttb" border="1">
             <tr>
@@ -223,6 +246,11 @@ mysqli_close($conn);
                                     <div id="table-container">
                                     <table border='1' cellpadding='10' cellspacing='10'>
                                     <tr><th>Course Name</th><th>Category</th><th>Price</th></tr>
+                                    <?php if (empty($cartItems)) : ?>
+        <tr>
+          <td colspan="4">Your cart is empty.</td>
+        </tr>
+      <?php else : ?>
                                     <?php foreach ($cartItems as $item) : ?>
                     <tr>
                         <td><?php echo htmlspecialchars($item['product_name']); ?></td>
@@ -230,6 +258,7 @@ mysqli_close($conn);
                         <td><?php echo htmlspecialchars($item['price']); ?></td>
                     </tr>
                 <?php endforeach; ?>
+                <?php endif; ?>
                 </table>
                                     </div>
 
@@ -273,7 +302,7 @@ mysqli_close($conn);
 
                                 </td>
                                 <td><input required type="text" id="country" name="city" autocomplete="address-level2"
-                                        enterkeyhint="next"></td>
+                                        enterkeyhint="next" ></td>
 
                             </tr>
 
@@ -301,12 +330,12 @@ mysqli_close($conn);
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Ödeme Yap</h2>
+            <h2>Pay</h2>
             <form id="payment-form">
                 <div class="form-group">
                     <label for="card_number">Card Number:</label>
-                    <input name="cardnumber"
-                    pattern="[0-9]{12,19}" required>
+                    <input name="cardnumber" id="card_number" maxlength = "16"
+                    pattern="[0-9]{16}" placeholder="XXXXXXXXXXXXXXXX" required>
                 </div>
                 <div class="form-group">
                     <label for="expiry_date">Expiry Date:</label>
@@ -314,13 +343,13 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label for="cvv">CVV:</label>
-                    <input type="number" id="cvv"  name="cvv" required>
+                    <input type="text" id="cvv"  name="cvv" maxlength="3" placeholder="XXX" required>
                 </div>
                 <div class="form-group">
                     <label for="name_on_card">Name on Card:</label>
-                    <input type="text" id="name_on_card" name="name_on_card" required>
+                    <input type="text" id="name_on_card" name="name_on_card" placeholder = "Name Surname" required>
                 </div>
-                <button type="submit">Ödeme Yap</button>
+                <button type="submit">Finish Payment</button>
             </form>
         </div>
     </div>
@@ -377,8 +406,25 @@ mysqli_close($conn);
 
         document.getElementById("payment-form").addEventListener("submit", function (event) {
             event.preventDefault();
-            alert("Ödendi");
+            afterPayment();
+            alert("You have paid.");
             closeModal();
+        });
+
+        function afterPayment() {
+            cValue1 = [];
+            Cookies.set('prod_ids', JSON.stringify(cValue1));
+            location.reload();
+        }
+
+        document.getElementById("cvv").addEventListener("input", function(evt) {
+            let inputValue = evt.target.value;
+            evt.target.value = inputValue.replace(/\D/g, '');
+        });
+
+        document.getElementById("card_number").addEventListener("input", function(evt) {
+            let inputValue = evt.target.value;
+            evt.target.value = inputValue.replace(/\D/g, '');
         });
 
     </script>
