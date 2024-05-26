@@ -64,9 +64,9 @@ session_start();
 <body>
 
 <div class="topnav">
-        <a  href="index.php" class="active">Home</a>
+        <a  href="index.php" >Home</a>
         <a href="all.php" >Courses</a>
-        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="active">Contact</a>
         <a href="aboutus.php">About Us</a>
         <a href="<?php 
         if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
