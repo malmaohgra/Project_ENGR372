@@ -20,8 +20,21 @@ $password=$_POST['pass1'];
 $password_02=$_POST['pass2'];
 $phone=$_POST['txt_phone'];
 
+//Check if email is unique or not
 
-if ($password==$password_02){
+$sql = "SELECT * FROM `customers` WHERE email='$email';";  
+$result = mysqli_query($conn, $sql);  
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+$count = mysqli_num_rows($result);  
+  
+if($count > 0){  
+
+  echo "<br> <br> <br> <br> <br> <br> Email already exsist, please login or try with different email";
+  
+  }  
+else{  
+
+  if ($password==$password_02){
     $sql = "INSERT INTO customers (name, surname, email, password, phone) VALUES ('$name', '$surename', '$email', '$password', '$phone');";
     if ($conn->query($sql) === TRUE) {
     header('Location: login.html');
@@ -33,8 +46,8 @@ if ($password==$password_02){
 else{
     echo "<br> <br> <br> <br> <br> <br> The password and password verification don't match, please try again";
 }
-
-
+    
+}     
  
 // Close connection
 mysqli_close($conn);
