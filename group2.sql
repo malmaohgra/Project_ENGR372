@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 19, 2024 at 08:27 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 26 May 2024, 16:03:52
+-- Sunucu sürümü: 8.0.37
+-- PHP Sürümü: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,22 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `group2`
+-- Veritabanı: `group2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tablo için tablo yapısı `category`
 --
 
 CREATE TABLE `category` (
-  `category_id` int(20) NOT NULL,
-  `category_name` varchar(50) NOT NULL
+  `category_id` int NOT NULL,
+  `category_name` varchar(50) COLLATE utf16_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
 
 --
--- Dumping data for table `category`
+-- Tablo döküm verisi `category`
 --
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
@@ -44,20 +44,20 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Tablo için tablo yapısı `customers`
 --
 
 CREATE TABLE `customers` (
-  `customer_id` int(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `surname` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `phone` varchar(255) NOT NULL
+  `customer_id` int NOT NULL,
+  `name` varchar(50) COLLATE utf16_turkish_ci NOT NULL,
+  `surname` varchar(50) COLLATE utf16_turkish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf16_turkish_ci NOT NULL,
+  `password` varchar(20) COLLATE utf16_turkish_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf16_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
 
 --
--- Dumping data for table `customers`
+-- Tablo döküm verisi `customers`
 --
 
 INSERT INTO `customers` (`customer_id`, `name`, `surname`, `email`, `password`, `phone`) VALUES
@@ -67,25 +67,57 @@ INSERT INTO `customers` (`customer_id`, `name`, `surname`, `email`, `password`, 
 (5, 'Abdullah', 'Ali', 'AA@gmail.com', '0000', '5553335550'),
 (6, 'Abdullah', 'Ali', 'AA@gmail.com', '0000', '5553335550'),
 (7, 'Halah', 'Sales', 'HH@gmail.com', '22', '123456789'),
-(8, 'Halah', 'Sales', 'HH@gmail.com', '123', '123456789');
+(8, 'Halah', 'Sales', 'HH@gmail.com', '123', '123456789'),
+(9, 'Melike', 'Tapcı', 'mtapci@gmail.com', '123', '1234567890');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Tablo için tablo yapısı `messages`
+--
+
+CREATE TABLE `messages` (
+  `email` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `subject` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `message` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fullname` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `messages`
+--
+
+INSERT INTO `messages` (`email`, `subject`, `message`, `fullname`) VALUES
+('mtapci@hotmail.com', 'Complaint', 'I have the wrong course in my courses page', 'Melike Tapcı'),
+('ayimaz@gmail.com', 'question', 'Test', 'Ali Yılmaz'),
+('aliveli@hotmail.com', 'feedback', 'testestest', 'Ali Veli'),
+('zcan@gmail.com', 'question', '\0Soru ', 'zeynep can '),
+('mztapci@gmail.com', 'feedback', '\0Abcabdc', 'melike'),
+('eylul@gmail.com', 'question', '\0Testing', 'eylül '),
+('ahmety@hotmail.com', 'feedback', '\0My testing ', 'ahmet yılmaz'),
+('eturk@gmail.com', 'question', '\0I\0 \0c\0a\0n\0t\0 \0a\0c\0c\0e\0s\0s\0 \0m\0y\0 \0o\0r\0d\0e\0r\0s\0 \0f\0r\0o\0m\0 \0a\0n\0y\0w\0h\0e\0r\0e\0 \0i\0n\0 \0w\0e\0b\0s\0i\0t\0e\0?', 'Elif Turk'),
+('sedayildirim@hotmail.com', 'question', 'When will my course expire?', 'Seda Yıldırım'),
+('jblack@gmail.com', 'complaint', 'I want to return my course and get my fee back!', 'John Black'),
+('mtapci@hotmail.com', 'feedback', 'Testing the contact form', 'Melike Tapcı'),
+('mztapci@gmail.com', 'feedback', '....', 'Melike');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `product`
 --
 
 CREATE TABLE `product` (
-  `product_id` int(50) NOT NULL,
-  `category_id` int(20) NOT NULL,
-  `name` varchar(120) NOT NULL,
-  `price` varchar(20) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL
+  `product_id` int NOT NULL,
+  `category_id` int NOT NULL,
+  `name` varchar(120) COLLATE utf16_turkish_ci NOT NULL,
+  `price` varchar(20) COLLATE utf16_turkish_ci NOT NULL,
+  `image` varchar(50) COLLATE utf16_turkish_ci NOT NULL,
+  `description` varchar(500) COLLATE utf16_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
 
 --
--- Dumping data for table `product`
+-- Tablo döküm verisi `product`
 --
 
 INSERT INTO `product` (`product_id`, `category_id`, `name`, `price`, `image`, `description`) VALUES
@@ -111,56 +143,56 @@ INSERT INTO `product` (`product_id`, `category_id`, `name`, `price`, `image`, `d
 (21, 3, 'Introduction to Astronomy', '1500₺', 'img/img_20.jpg', 'This course explores the universe beyond Earth, including the solar system, stars, galaxies, and cosmology. Topics include the life cycle of stars, black holes, and the Big Bang theory. It provides a comprehensive understanding of the cosmos.');
 
 --
--- Indexes for dumped tables
+-- Dökümü yapılmış tablolar için indeksler
 --
 
 --
--- Indexes for table `category`
+-- Tablo için indeksler `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `customers`
+-- Tablo için indeksler `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `product`
+-- Tablo için indeksler `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `fk_ category_id` (`category_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- Tablo için AUTO_INCREMENT değeri `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `customers`
+-- Tablo için AUTO_INCREMENT değeri `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `product`
+-- Tablo için AUTO_INCREMENT değeri `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- Constraints for dumped tables
+-- Dökümü yapılmış tablolar için kısıtlamalar
 --
 
 --
--- Constraints for table `product`
+-- Tablo kısıtlamaları `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_ category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
