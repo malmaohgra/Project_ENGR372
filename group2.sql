@@ -65,8 +65,8 @@ INSERT INTO `customers` (`customer_id`, `name`, `surname`, `email`, `password`, 
 (3, 'Mohammed', 'Ahmed', 'Mohammed@gmail.com', '1234', '5555555534'),
 (4, 'Alaa', 'Ali', 'Alaa@gmail.com', '34', '5555555578'),
 (5, 'Abdullah', 'Ali', 'AA@gmail.com', '0000', '5553335550'),
-(6, 'Abdullah', 'Ali', 'AA@gmail.com', '0000', '5553335550'),
-(7, 'Halah', 'Sales', 'HH@gmail.com', '22', '123456789'),
+(6, 'Abdullah', 'Mahmoud', 'Abd@gmail.com', '0000', '5553335550'),
+(7, 'Halah', 'Sales', 'HHSales@gmail.com', '22', '123456789'),
 (8, 'Halah', 'Sales', 'HH@gmail.com', '123', '123456789'),
 (9, 'Melike', 'Tapcı', 'mtapci@gmail.com', '123', '1234567890');
 

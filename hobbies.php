@@ -1,22 +1,16 @@
 <?php
 session_start();
-//Connect with DB
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "group2";
-// Create connection
+
+include 'external.php';
 $mysqli = new mysqli($servername, $username,
                 $password, $dbname);
  
-// Checking for connections
 if ($mysqli->connect_error) {
     die('Connect Error (' .
     $mysqli->connect_errno . ') '.
     $mysqli->connect_error);
 }
  
-// SQL query to select data from database
 $sql = " SELECT * FROM product WHERE category_id= 1";
 $result = $mysqli->query($sql);
 $mysqli->close();
@@ -53,18 +47,22 @@ if(!isset($_SESSION['logged'])){
             var date = new Date();
             date.setTime(date.getTime() + (1*60*1000));
             var cValue= Cookies.get('prod_ids');
-            //Check if cookie is there
+            
             if (cValue == undefined){
                 console. log( 'Cookie array created' );
-                //Create ids array, add it to cookie
+                
                 var p_ids=[prod_id];
                 Cookies.set('prod_ids', JSON.stringify(p_ids), { expires: date });
                 console. log( "Prod id: ", prod_id ," added");
             }
             else{
                 console. log( 'Cookie array exsist' );
-                //Get the array
+                
                 var p_ids= $.parseJSON(Cookies.get('prod_ids'));
+                if (p_ids.indexOf(prod_id) !== -1) {
+            alert("Product with id " + prod_id + " already exists in cart");
+            return; 
+        }
                 p_ids.push(prod_id);
                 Cookies.set('prod_ids', JSON.stringify(p_ids), {  expires: date });
                 console. log( 'Id added' );

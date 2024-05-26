@@ -1,10 +1,8 @@
 <?php
+include 'external.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "group2";
+    
 
   
     $conn = new mysqli($servername, $username, $password, $dbname);

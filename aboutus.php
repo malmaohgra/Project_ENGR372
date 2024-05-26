@@ -202,8 +202,8 @@ body > section > section:nth-child(4) > div > img {
       <img src="images/about.jpg" style="width: 350px; height: auto;" alt="about" />
       <div class="text">
         <h1>About Us</h1>
-        <p>Welcome to our Group 2 company!
-          Here at Group 2, we're dedicated to igniting your curiosity and fueling your
+        <p>Welcome to our MindSpark Academy company!
+          Here at MindSpark Academy, we're dedicated to igniting your curiosity and fueling your
           passion for learning. Our platform offers a diverse range of courses designed to inspire, educate, and empower
           learners of all backgrounds. From hobbies like cooking, dancing, art, and crafts to science and IT courses, we
           cater to a wide variety of interests. Join us as we embark on a journey of knowledge discovery and personal
