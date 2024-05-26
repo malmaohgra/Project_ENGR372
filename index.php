@@ -16,7 +16,7 @@ if(!$_SESSION['logged']){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>   
+    <title>Main page</title>   
 </head>
 
 <body>
@@ -52,11 +52,16 @@ if(!$_SESSION['logged']){
 
 <div class="container">
 <h1>Welcome!</h1>
-<h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, repellat?
-Pariatur obcaecati rerum corporis facere harum deserunt nesciunt rem id.
-Reprehenderit iste nesciunt quia totam distinctio corporis deserunt possimus tempore!
-Itaque nesciunt qui repudiandae obcaecati animi atque! Repellat, debitis recusandae.
-Eos veritatis architecto odit rem dolor. Facilis numquam voluptatibus earum.</h3>
+<h3>Group2 offers a variety of online courses designed for you. We provide courses in IT and technology to help you get more skilled at your job, 
+    as well as courses in science that are exciting and can help you learn more about science. 
+    You may also enjoy hobbies like writing, cooking, dancing or crochet. </h3>
+    <br>
+<h2 style="text-align: center;">Why Group2? <h2>
+
+<h3>Our experienced instructors support you in every aspect, 
+ensuring that you develop real-world skills. With the help of our educators, 
+you may learn at your own pace, whenever and wherever you choose, with the help of flexible study choices.
+ Our affordable fees also guarantee that everyone has access to high-quality education.</h3>
 <br>
 <hr>
 
@@ -81,15 +86,15 @@ Eos veritatis architecto odit rem dolor. Facilis numquam voluptatibus earum.</h3
 
         <tr>
             <td>
-                <img src="images/hobby_placeholder.png" width="240">
+                <img class="main-page-image" src="images/hobby_placeholder.png" width="240" >
                 
             </td>
             <td>
-                <img src="images/it_placeholder.png" alt="" width="240">
+                <img src="images/it_placeholder.png" alt="" width="240" class="main-page-image">
                
             </td>
             <td>
-                <img src="images/science_placeholder.png" alt="" width="240">
+                <img src="images/science_placeholder.png" alt="" width="240" class="main-page-image">
             </td>
         </tr>
         <tr>
