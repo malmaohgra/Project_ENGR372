@@ -1,5 +1,10 @@
 <?php 
 session_start();
+
+if(!isset($_SESSION['logged'])){
+  $_SESSION['logged'] = 0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +22,9 @@ session_start();
 <style> 
 
 *{
-  margin: 0;
-  padding: 0;
+
   box-sizing: border-box;
   color: #2a3172;
-  font-family: "Open Sans";
 }
 
 body > section > div > div > h1 {
@@ -70,8 +73,8 @@ h2 {
   text-align: center;
   margin-top: 140px;
 }
-h1, h2 {
-  font-family: "Montserrat";
+h1{
+  font-size: 40px;
 }
 .text h2{
   font-size: 80px;
@@ -107,64 +110,10 @@ span{
   border: 1px solid #4070f4;
 }
 
-.pica {
-    margin-bottom: 7080px;
-    margin-left: 10%;
-}
 
-.pics {
-    margin-bottom: 7080px;
-    margin-left: 10%;
-}
-
-.text1 {
-    margin-left: 20px;
-    margin-bottom: 7080px;
-}
-
-.text2 { 
-    margin-bottom: 7080px;
-    margin-left: 20px;
-
-
-}
-.about-uss{
-    height: 250vh;
-    width: 100%;
-    padding: 90px 0;
-    background: #ddd;
-  }
-
-.about-usa {
-    
-  height: 250vh;
-    width: 100%;
-        padding: 90px 0;
-        background: #ddd;
-}
-
-.about-uss1 {
-    width: 1130px;
-    max-width: 85%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 150px;
-
-}
-.about-usa1{
-    width: 1130px;
-    max-width: 85%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 150px;
-}
 
 section {
-  padding: 0 40px;
+  
 }
 .wrap {
   display: flex;
@@ -176,6 +125,7 @@ section {
 }
 .wrap .item {
   padding: 0 0 0 50px;
+  font-size: 15px;
 }
 .wrap img {
   margin: 0 50px;
@@ -237,18 +187,23 @@ body > section > section:nth-child(4) > div > img {
         }
         ?>
     </a>
-        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
-        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
-        My Shopping Cart </a>
+    <?php
+    if(isset($_SESSION['logged']) && ($_SESSION['logged'] == 1)) {
+    echo '<a href="cartPage.php" style="margin-left: 7%; padding: 18px;">
+            <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px;">
+            My Shopping Cart
+          </a>';
+}
+?>
 </div> 
- 
+<div class="container"> 
 <section class="about-us">
     <div class="about">
-      <img src="images/about.jpg" alt="about" />
+      <img src="images/about.jpg" style="width: 350px; height: auto;" alt="about" />
       <div class="text">
         <h1>About Us</h1>
-        <p>Welcome to our Group 2 company!
-          Here at Group 2, we're dedicated to igniting your curiosity and fueling your
+        <p>Welcome to our MindSpark Academy company!
+          Here at MindSpark Academy, we're dedicated to igniting your curiosity and fueling your
           passion for learning. Our platform offers a diverse range of courses designed to inspire, educate, and empower
           learners of all backgrounds. From hobbies like cooking, dancing, art, and crafts to science and IT courses, we
           cater to a wide variety of interests. Join us as we embark on a journey of knowledge discovery and personal
@@ -261,24 +216,24 @@ body > section > section:nth-child(4) > div > img {
       <div class="wrap">
         <div class="item">
           <p><b>- Dancing:</b> Learn various styles of dance, from salsa to hip-hop, in a fun and supportive
-            environment. No prior experience required!</p>
+            environment. No prior experience required!</p><br>
           <p><b>- Cooking:</b> Explore the culinary world with our cooking courses, where you'll learn essential
-            techniques, recipes, and tips to impress your friends and family in the kitchen.</p>
+            techniques, recipes, and tips to impress your friends and family in the kitchen.</p><br>
           <p><b>- Art and Crafts:</b> Unleash your creativity with our art and crafts courses, covering everything from
             painting and drawing to pottery and jewelry making.</p>
         </div>
-        <img style="width: 200px; height: auto;" src="images/hobbies.jpg" alt="img" />
+        <img style="width: 250px; height: auto;" src="images/hobbies.jpg" alt="img" />
       </div>
     </section>
     <section>
       <h2>Science Courses:</h2>
       <div class="wrap">
-        <img src="images/science.jpg" alt="img" />
+        <img src="images/science.jpg" style="width: 400px; height: auto;" alt="img" />
         <div class="item">
           <p><b>- Physics:</b> Dive into the fascinating world of physics, where you'll learn about the laws of motion,
-            electricity, magnetism, and more through hands-on experiments and demonstrations.</p>
+            electricity, magnetism, and more through hands-on experiments and demonstrations.</p><br>
           <p><b>- Biology:</b> Explore the wonders of life with our biology courses, covering topics such as genetics,
-            evolution, ecology, and anatomy, with a focus on real-world applications.</p>
+            evolution, ecology, and anatomy, with a focus on real-world applications.</p><br>
           <p><b>- Chemistry:</b> Discover the magic of chemistry as you explore the properties of matter, chemical
             reactions, and the periodic table through engaging demonstrations and lab experiments.</p>
         </div>
@@ -289,14 +244,14 @@ body > section > section:nth-child(4) > div > img {
       <div class="wrap">
         <div class="item">
           <p><b>- Web Development:</b> Master the fundamentals of web development, including HTML, CSS, JavaScript, and
-            responsive design, to create stunning and functional websites from scratch.</p>
+            responsive design, to create stunning and functional websites from scratch.</p><br>
           <p><b>- Programming:</b> Learn programming languages such as Python, Java, and C++, and gain the skills to
-            develop software applications, games, and algorithms.</p>
+            develop software applications, games, and algorithms.</p><br>
           <p><b>- Data Science:</b> Dive into the world of data science, where you'll learn how to analyze and interpret
             data using statistical methods, machine learning algorithms, and data visualization tools to make informed
             decisions.</p>
         </div>
-        <img src="images//it.jpg" alt="img" />
+        <img src="images//it.jpg" style="width: 280px; height: auto;" alt="img" />
       </div>
     </section>
     <div class="contacts">
@@ -306,6 +261,7 @@ body > section > section:nth-child(4) > div > img {
       </a>
     </div>
   </section>
+</div>
   
   
 

@@ -1,23 +1,20 @@
 <?php
 session_start();
 
-// Connect with DB
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "group2";
 
-// Create connection
+include 'external.php';
+
+
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-// Fetch cart items from the database based on the product IDs stored in the cookie
+
 $cartItems = [];
-if(!$_COOKIE['prod_ids']){
+if(!isset($_COOKIE['prod_ids'])){
   $_COOKIE['prod_ids'] = "";
 }
 $cValue = json_decode($_COOKIE['prod_ids'], true);
@@ -25,7 +22,7 @@ $cValue = json_decode($_COOKIE['prod_ids'], true);
 
 
 if (!empty($cValue)) {
-    // Convert array to comma-separated string for the SQL query
+    
     $productIds = implode(',', $cValue);
     $sql = "SELECT p.product_id, p.name AS product_name, c.category_name, p.price 
             FROM product p 
@@ -49,7 +46,7 @@ if(!$_SESSION['logged']){
 }
 
 
-// Close connection
+
 mysqli_close($conn);
 ?>
 
@@ -68,10 +65,8 @@ mysqli_close($conn);
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        
         background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
       }
       .cart-container {
         width: 80%;
@@ -190,7 +185,7 @@ mysqli_close($conn);
         <td>
           <button
             class="checkout-btn"
-            onclick="location.href='checkout.php'"
+            onclick= goCheckout()
           >
             Checkout
           </button>
@@ -202,7 +197,15 @@ mysqli_close($conn);
 
 <script>
 
-
+function goCheckout(){
+  var cartItems = <?php echo json_encode($cartItems); ?>;
+  if(cartItems.length === 0){
+    alert("Your Cart is empty.")
+  }
+  else{
+    location.href='checkout.php'
+  }
+}
 
 
 function removeItemsFromCookie(ids) {
@@ -218,12 +221,12 @@ function removeItemsFromCookie(ids) {
 
 
 </script>
-    <footer>
+<footer>
     <small>
       2024 Spring Semester - ENGR 372 - 
     </small>
     <small>
-        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra
+        Melike Z. Tapcı, Resul Erdem Arduç, Ege Eylül Kırmızı, Maram Al-Maohgra, Nazrin Isayeva
     </small>
   </footer>
 </body>

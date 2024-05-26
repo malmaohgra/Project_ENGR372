@@ -1,10 +1,8 @@
 <?php
+include 'external.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "group2";
+    
 
   
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST["fullname"];
     $email = $_POST["email"];
     $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $message = mysqli_real_escape_string($conn, $_POST["message"]);
 
 
 

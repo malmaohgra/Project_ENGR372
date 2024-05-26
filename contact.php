@@ -83,9 +83,14 @@ session_start();
         }
         ?>
     </a>
-        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
-        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
-        My Shopping Cart </a>
+    <?php
+    if(isset($_SESSION['logged']) && ($_SESSION['logged'] == 1)) {
+    echo '<a href="cartPage.php" style="margin-left: 7%; padding: 18px;">
+            <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px;">
+            My Shopping Cart
+          </a>';
+}
+?>
 </div> 
 <div class="container">
 <h1>Contact Us</h1>
