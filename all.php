@@ -20,7 +20,7 @@ if ($mysqli->connect_error) {
 $sql = " SELECT * FROM product ORDER BY price";
 $result = $mysqli->query($sql);
 
-if(!$_SESSION['logged']){
+if(!isset($_SESSION['logged'])){
     $_SESSION['logged'] = 0;
 }
 
@@ -67,6 +67,10 @@ $mysqli->close();
                 console. log( 'Cookie array exsist' );
                 //Get the array
                 var p_ids= $.parseJSON(Cookies.get('prod_ids'));
+                if (p_ids.indexOf(prod_id) !== -1) {
+            alert("Product with id " + prod_id + " already exists in cart");
+            return; // Exit the function if the product already exists
+        }
                 p_ids.push(prod_id);
                 Cookies.set('prod_ids', JSON.stringify(p_ids), {  expires: date });
                 console. log( 'Id added' );
@@ -111,9 +115,14 @@ $mysqli->close();
         }
         ?>
     </a>
-        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
-        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
-        My Shopping Cart </a>
+    <?php
+    if(isset($_SESSION['logged']) && ($_SESSION['logged'] == 1)) {
+    echo '<a href="cartPage.php" style="margin-left: 7%; padding: 18px;">
+            <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px;">
+            My Shopping Cart
+          </a>';
+}
+?>
 </div> 
     
     <!--Div container-->

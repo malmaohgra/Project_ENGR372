@@ -17,7 +17,7 @@ if ($conn === false) {
 
 // Fetch cart items from the database based on the product IDs stored in the cookie
 $cartItems = [];
-if(!$_COOKIE['prod_ids']){
+if(!isset($_COOKIE['prod_ids'])){
   $_COOKIE['prod_ids'] = "";
 }
 $cValue = json_decode($_COOKIE['prod_ids'], true);
@@ -70,8 +70,6 @@ mysqli_close($conn);
       body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
       }
       .cart-container {
         width: 80%;
@@ -190,7 +188,7 @@ mysqli_close($conn);
         <td>
           <button
             class="checkout-btn"
-            onclick="location.href='checkout.php'"
+            onclick= goCheckout()
           >
             Checkout
           </button>
@@ -202,7 +200,15 @@ mysqli_close($conn);
 
 <script>
 
-
+function goCheckout(){
+  var cartItems = <?php echo json_encode($cartItems); ?>;
+  if(cartItems.length === 0){
+    alert("Your Cart is empty.")
+  }
+  else{
+    location.href='checkout.php'
+  }
+}
 
 
 function removeItemsFromCookie(ids) {

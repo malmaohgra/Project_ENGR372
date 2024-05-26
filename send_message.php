@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST["fullname"];
     $email = $_POST["email"];
     $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $message = mysqli_real_escape_string($conn, $_POST["message"]);
 
 
 

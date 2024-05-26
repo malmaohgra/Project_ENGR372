@@ -28,9 +28,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);  
   
 if($count > 0){  
-
-  echo "<br> <br> <br> <br> <br> <br> Email already exsist, please login or try with different email";
   
+  echo '<script>alert("Email already exists, please login or try with a different email");</script>';
+    echo '<script>window.location.href = "signup.html";</script>';
   }  
 else{  
 

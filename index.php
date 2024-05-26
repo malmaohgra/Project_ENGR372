@@ -1,8 +1,7 @@
 <?php 
 session_start();
 
-
-if(!$_SESSION['logged']){
+if(!isset($_SESSION['logged'])){
     $_SESSION['logged'] = 0;
 }
 
@@ -45,18 +44,23 @@ if(!$_SESSION['logged']){
         }
         ?>
     </a>
-        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
-        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
-        My Shopping Cart </a>
+    <?php
+    if(isset($_SESSION['logged']) && ($_SESSION['logged'] == 1)) {
+    echo '<a href="cartPage.php" style="margin-left: 7%; padding: 18px;">
+            <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px;">
+            My Shopping Cart
+          </a>';
+}
+?>
 </div> 
 
 <div class="container">
 <h1>Welcome!</h1>
-<h3>Group2 offers a variety of online courses designed for you. We provide courses in IT and technology to help you get more skilled at your job, 
+<h3>MindSpark Academy offers a variety of online courses designed for you. We provide courses in IT and technology to help you get more skilled at your job, 
     as well as courses in science that are exciting and can help you learn more about science. 
     You may also enjoy hobbies like writing, cooking, dancing or crochet. </h3>
     <br>
-<h2 style="text-align: center;">Why Group2? <h2>
+<h2 style="text-align: center; color: #a759be;">Why MindSpark Academy? <h2>
 
 <h3>Our experienced instructors support you in every aspect, 
 ensuring that you develop real-world skills. With the help of our educators, 

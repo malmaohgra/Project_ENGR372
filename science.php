@@ -22,10 +22,9 @@ $result = $mysqli->query($sql);
 $mysqli->close();
 
 
-if(!$_SESSION['logged']){
+if(!isset($_SESSION['logged'])){
     $_SESSION['logged'] = 0;
 }
-
 
 ?>
 
@@ -109,9 +108,14 @@ if(!$_SESSION['logged']){
         }
         ?>
     </a>
-        <a href="cartPage.php" style="margin-left: 7%;  padding: 18px ; " >
-        <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px; ">
-        My Shopping Cart </a>
+    <?php
+    if(isset($_SESSION['logged']) && ($_SESSION['logged'] == 1)) {
+    echo '<a href="cartPage.php" style="margin-left: 7%; padding: 18px;">
+            <img src="images/shopping-cart_03.png" alt="" width="30" style="margin-top: 0px;">
+            My Shopping Cart
+          </a>';
+}
+?>
 </div> 
     <!--Div container-->
     <div class="container">

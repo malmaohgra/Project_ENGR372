@@ -1,3 +1,150 @@
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #fbe3ce;
+    color: #000;
+    margin-top: 5%;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+  }
+    
+    body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(90deg, #0d349b, #e99bc1);
+    background-repeat: no-repeat;
+    letter-spacing: 1px;
+    font-size: 1vw;
+    height: 100%;
+    
+
+    }
+    .container{
+        background-color: #F5F5F5;
+        margin: 1% 5%;
+        border: solid 1px rgb(15, 21, 73);
+        padding: 1% 5%;
+    }
+    ul{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        font-size: 1vw;
+
+    }
+    li{
+        display: inline;
+        padding-right: 5%;
+        
+    }
+    li a{
+        text-decoration: none;
+        color: #0d349b;
+        border-radius: 25px;
+       
+
+    }
+    .choosen{
+        border: #0d349b 1px solid;
+        padding: 1vw;
+    }
+    li a:hover{
+        color: #EC9BBE;
+        border: #EC9BBE 1px solid;
+        padding: 1vw;
+
+    }
+    td, tr{
+        border: #0d349b solid 0px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    td{
+        width: 33%;
+    }
+    div.card{
+        margin: 5px;
+        border: 1px solid #ece4e4;
+        width: 25vw;
+        height: auto;
+    }
+
+    div.card:hover {
+        border: 2px solid lightgray;
+    }
+    .card img{
+        width: 100%;
+        height: 25vh;
+    }
+    div.card_content{
+        text-align: center;
+        padding: 0.4vw;
+        position: relative;
+    }
+    hr{
+        border: none;
+        border-top: 2px solid lightgray;
+        margin-top: 10px;
+        margin-bottom: 5px;
+
+        
+    }
+    .card_title{
+        color: #0d349b;
+        font-size: 1.2vw;
+        padding: 1vh;
+        text-align: center
+
+    }
+    .card_footer{
+        color: black;
+        padding: 1vw;
+        margin-left: 10%;
+        font-size: 0.9vw;
+      
+    }
+    input[type=button]{
+    border: 1px solid black;
+    font-weight: 5;
+    border-radius: 5px;
+    background-color: #ebdede;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.8vw;
+    width: 35%;
+    height: 3vh;
+    cursor: pointer;
+    padding:  5px 8px;
+    margin-left: 10%;
+    }
+
+    input[type="button"]:hover{
+    color: #fafafa;
+    background-color: #0d349b;
+    font-size: 0.9vw;
+    width: 37%;
+    margin-left: 10%;
+}
+.card_content .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #FEE3C8;
+  text-align: left ;
+  padding: 15px;
+  font-size: 1vw;
+}
+
+.card_content:hover .overlay {
+  opacity: 0.88;
+}
+
+  
 .topnav {
     overflow: hidden;
     background-color: linear-gradient(90deg, #0d349b, #e99bc1);
@@ -19,149 +166,7 @@
   
   .topnav a.active {
     background-color: #ddd;
-    color: #fafafa;
-    
-  }
-
-  footer {
-    text-align: center;
-    padding: 5px;
-    background-color: #fbe3ce;
     color: #000;
-    margin-top: 5%;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
+    
   }
-    
-    body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(90deg, #0d349b, #e99bc1);
-    background-repeat: no-repeat;
-    letter-spacing: 1px;
-    font-size: 14px;
-    height: 100%;
-    
-
-    }
-    .container{
-        background-color: #F5F5F5;
-        margin: 1% 5%;
-        border: solid 1px rgb(15, 21, 73);
-        padding: 1% 5%;
-    }
-    ul{
-        margin-top: 5%;
-        margin-bottom: 5%;
-        font-size: 16px;
-
-    }
-    li{
-        display: inline;
-        padding-right: 5%;
-        
-    }
-    li a{
-        text-decoration: none;
-        color: #0d349b;
-        border-radius: 25px;
-       
-
-    }
-    .choosen{
-        border: #0d349b 1px solid;
-        padding: 10px;
-    }
-    li a:hover{
-        color: #EC9BBE;
-        border: #EC9BBE 1px solid;
-        padding: 10px;
-
-    }
-    td, tr{
-        border: #0d349b solid 0px;
-        padding: 10px;
-        margin: 10px;
-    }
-
-    td{
-        width: 33%;
-    }
-    div.card{
-        margin: 5px;
-        border: 1px solid #ece4e4;
-        width: 25vw;
-    }
-
-    div.card:hover {
-        border: 2px solid lightgray;
-    }
-    .card img{
-        width: 100%;
-        height: 240px;
-    }
-    div.card_content{
-        text-align: center;
-        padding: 5px;
-        position: relative;
-    }
-    hr{
-        border: none;
-        border-top: 2px solid lightgray;
-        margin-top: 10px;
-        margin-bottom: 5px;
-
-        
-    }
-    .card_title{
-        color: #0d349b;
-        font-size: large;
-        padding: 10px;
-        text-align: center
-
-    }
-    .card_footer{
-        color: black;
-        padding: 5px;
-        margin-left: 10%;
-      
-    }
-    input[type=button]{
-    border: 1px solid black;
-    font-weight: 5;
-    border-radius: 5px;
-    background-color: #ebdede;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 2px;
-    font-size: medium;
-    width: 35%;
-    cursor: pointer;
-    padding:  5px 8px;
-    margin-left: 10%;
-    }
-
-   input[type="button"]:hover{
-    color: #fafafa;
-    background-color: #0d349b;
-    font-size: 16px;
-    width: 37%;
-    margin-left: 10%;
-}
-.card_content .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #FEE3C8;
-  text-align: left ;
-  padding: 15px;
-  font-size: 14px;
-}
-
-.card_content:hover .overlay {
-  opacity: 0.88;
-}
+  
