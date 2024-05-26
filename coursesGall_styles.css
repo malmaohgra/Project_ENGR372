@@ -29,6 +29,9 @@
     background-color: #fbe3ce;
     color: #000;
     margin-top: 5%;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
   }
     
     body{
@@ -38,6 +41,7 @@
     background-size: cover;
     letter-spacing: 1px;
     font-size: 14px;
+    height: 100vh;
     }
     .container{
         background-color: #F5F5F5;
