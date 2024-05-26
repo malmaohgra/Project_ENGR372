@@ -121,7 +121,8 @@ mysqli_close($conn);
   padding: 5px;
   background-color: #fbe3ce;
   color: #000;
-  position: relative;
+  position: fixed;
+  bottom: 0;
 }
     </style>
 </head>
