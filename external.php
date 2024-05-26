@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "abc";
+$password = "abc";
 $dbname = "group2";
 
 ?>
